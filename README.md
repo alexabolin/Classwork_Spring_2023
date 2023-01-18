@@ -15,7 +15,8 @@ This database will contain:
   - A+
   - A-
   - B+
-    * more
+  - AB+
+  - AB-
 
 ## Future additions
 1. Patient address
