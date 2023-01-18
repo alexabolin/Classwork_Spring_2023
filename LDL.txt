@@ -1,1 +1,6 @@
-Low Density Lipoproteins
+#LDL
+
+LDL means low density lipoproteins.
+
+Healthy levels for LDL are:
+* below 130 mg/dL

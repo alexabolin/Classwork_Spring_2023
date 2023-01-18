@@ -1,1 +1,7 @@
+#HDL
+
 HDL means high density lipoproteins.
+
+Healthy levels for HDL are:
+* above 40 mg/dL for men
+* above 50 mg/dL for women
