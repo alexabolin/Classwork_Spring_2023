@@ -5,6 +5,7 @@ def interface():
         print("Optional")
         print("1 - HDL")
         print("2 - LDL")
+        print("3 - Cholesterol")
         print("9 - Quit")
         choice = input("Select an option: ")
         if choice == "9":
@@ -13,6 +14,8 @@ def interface():
             HDL_driver()
         elif choice == "2":
             LDL_driver()
+        elif choice == "3":
+            Chol_driver()
     print("Program ending") 
 
 def HDL_driver():
@@ -63,5 +66,27 @@ def LDL_output(LDL_value, LDL_analy):
     print("The LDL result of {} is considered {}".format(LDL_value, LDL_analy))
     return
 
+def Chol_driver():
+    Chol_in = Chol_input()
+    Chol_analy = Chol_analysis(Chol_in)
+    Chol_output(Chol_in, Chol_analy)
+
+def Chol_input():
+    Chol_value = input("Enter the total cholesterol results: ")
+    Chol_value = int(Chol_value)
+    return Chol_value
+
+def Chol_analysis(Chol_int):
+    if Chol_int >= 240:
+        answer = "High"
+    elif 200 <= Chol_int < 239:
+        answer = "Borderline High"
+    else:
+        answer = "Normal"
+    return answer
+
+def Chol_output(Chol_value, Chol_analy):
+    print("The total cholesterol result of {} is considered {}".format(Chol_value, Chol_analy))
+    return
 
 interface()
