@@ -11,6 +11,9 @@ This is written in Python.
 This database will contain:
 * Patient Name
 * Patient Age
+* Patient Test Results
+
+
 * Patient Bloodtype
   - A+
   - A-
