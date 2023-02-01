@@ -11,7 +11,8 @@ This is written in Python.
 This database will contain:
 * Patient Name
 * Patient Age
-* Patient Test Results
+* Patient Test Results, List of Lists
+  - Each test is represented by [test_name, test_value] where test_name is a string and test_value is an integer/float
 
 
 * Patient Bloodtype
