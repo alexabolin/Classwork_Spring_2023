@@ -16,7 +16,7 @@ from blood_calculator import Chol_analysis
                           (Chol_analysis, 250, "High"),
                           (Chol_analysis, 210, "Borderline High"),
                           (Chol_analysis, 190, "Normal")])
-def test_HDL_analysis_normal(test, input, expected):
+def test_blood_calculator_test_conditions(test, input, expected):
     # Arrange (parameters)
     # Act
     answer = test(input)
