@@ -11,9 +11,8 @@ def get_full_name(patient):
 
 def print_database(db):
     for patient in db.values():
-        print("MRN: {}, Full Name: {}, Age: {}".format(patient["MRN"],
-                                                        get_full_name(patient),
-                                                        patient["Age"]))
+        print("MRN: {}, Full Name: {}, Age: {}".format(patient["MRN"]))
+        return
 
 
 def main_driver():
@@ -25,8 +24,8 @@ def main_driver():
     add_test_to_patient(db, 2, "LDL", "100")
     add_test_to_patient(db, 2, "HDL", "99")
     print_database(db)
-#    room_numbers = ["103", "232", "333"]
-#    print_directory(db, room_numbers)
+    # room_numbers = ["103", "232", "333"]
+    # print_directory(db, room_numbers)
     print(get_test_result(db, 2, "LDL"))
     print(db)
     return
@@ -35,8 +34,8 @@ def main_driver():
 def print_directory(db, room_numbers):
     for i, patient in enumerate(db):
         print("Patient {} is in room {}".format(patient[0], room_numbers[i]))
-#    for patient, rn in zip(db, room_numbers):
-#        print("Patient {} is in room {}".format(patient[0], rn))
+    # for patient, rn in zip(db, room_numbers):
+        # print("Patient {} is in room {}".format(patient[0], rn))
 
 
 def get_patient_entry(db, mrn_to_find):
