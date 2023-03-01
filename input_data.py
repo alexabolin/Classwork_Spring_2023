@@ -4,6 +4,8 @@ Created on Wed Feb 15 12:23:06 2023
 
 @author: hboli
 """
+
+
 def input_fruit(filename):
     in_file = open("input_data.txt", "r")
     fruits = in_file.readlines()
@@ -13,6 +15,7 @@ def input_fruit(filename):
     first_fruit = in_file.readline()
     second_fruit = in_file.readline()
     return fruits, first_fruit, second_fruit
+
 
 def read_file(filename):
     in2_file = open("input_data.txt", "r")

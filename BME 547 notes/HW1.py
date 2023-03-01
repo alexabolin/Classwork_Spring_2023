@@ -7,10 +7,12 @@ Created on Wed Jan 11 14:56:40 2023
 import numpy as np
 
 # %% Exercise 1
-input1 = ["apple", "banana", "cranberry", "date", "eggplant", "fennel", "guava"]
+input1 = ["apple", "banana", "cranberry", "date",
+          "eggplant", "fennel", "guava"]
 
 lessthan = []
 overthan = []
+
 
 def exercise1(grocery):
     for i in grocery:
@@ -20,24 +22,25 @@ def exercise1(grocery):
             overthan.append(i)
     return
 
+
 def output1():
     print("Less than or equal to 5 letters:")
     for i in lessthan:
         print("{}".format(i))
     print("More than 5 letters:")
-    for i in overthan: 
+    for i in overthan:
         print("{}".format(i))
     return
-        
+
+
 def program1():
     print("Exercise 1")
     exercise1(input1)
     output1()
     return
 
-program1()
-    
 
+program1()
 # %% Exercise 2
 roots = []
 final = []
@@ -49,17 +52,20 @@ inputc = input("Insert value for c:")
 a = int(inputa)
 b = int(inputb)
 c = int(inputc)
- 
+
+
 def exercise2_1(number):
     if number >= 0:
         return "True"
     else:
         return "False"
- 
-def exercise2_2(a,b,c):
+
+
+def exercise2_2(a, b, c):
     sol1 = (-b + np.sqrt((b**2)-(4*a*c)))/(2*a)
     sol2 = (-b - np.sqrt((b**2)-(4*a*c)))/(2*a)
     return [sol1, sol2]
+
 
 def output2():
     for i in roots:
@@ -70,29 +76,14 @@ def output2():
         print("different sign")
     return
 
+
 def program2():
     roots.clear()
     final.clear()
-    roots.append(exercise2_2(a,b,c)[0])
-    roots.append(exercise2_2(a,b,c)[1])
+    roots.append(exercise2_2(a, b, c)[0])
+    roots.append(exercise2_2(a, b, c)[1])
     output2()
-    return 
+    return
+
 
 program2()
-
-    
-    
-    
-    
-
-
-    
-
-       
-
-    
-        
-        
-        
-        
-        
