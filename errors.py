@@ -4,7 +4,7 @@ def my_function(x):
         type_in = type(numer)
     except NameError:
         type_in = type(number)
-    
+
     if type_in == int:
         print("even")
     else:
@@ -24,6 +24,7 @@ def main():
             print("Must enter number")
     except ValueError:
         print("Must enter positive number")
+
 
 if __name__ == "__main__":
     main()
