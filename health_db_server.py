@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 def add_patient_to_db(id, name, blood_type):
     new_patient = {"id": id,
-                    "name": name,
-                    "blood_type": blood_type,
-                    "tests":[]}
+                   "name": name,
+                   "blood_type": blood_type,
+                   "tests": []}
     db[id] = new_patient
     print(db)
 
@@ -64,7 +64,8 @@ def post_add_test():
 
 def add_test_driver(in_data):
     # Validate input
-    validation = validate_input_data(in_data, ["id", "test_name", "test_result"],
+    validation = validate_input_data(in_data, ["id", "test_name",
+                                               "test_result"],
                                      [int, str, int])
     if validation is not True:
         return validation, 400
@@ -82,6 +83,23 @@ def does_patient_exist_in_db(id):
         return True
     else:
         return False
+
+
+@app.route("/get_results", methods=["GET"])
+def get_results():
+    # Get input data
+    in_data = request.get_json()
+    # Call other functions
+    answer, status_code = get_results_driver(in_data)
+    # Return a response
+    return jsonify(answer), status_code
+
+
+def get_results_driver(in_data):
+    id = in_data["id"]
+    results = db[id]["tests"]
+    print(results)
+    return "Results gathered", 200
 
 
 if __name__ == "__main__":

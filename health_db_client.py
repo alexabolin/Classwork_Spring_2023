@@ -11,3 +11,8 @@ data = {"id": 1, "test_name": "HDL", "test_result": 150}
 r = requests.post(server + "/add_test", json=data)
 print(r.status_code)
 print(r.text)
+
+results = {"id": 1}
+r = requests.get(server + "/get_results", json=results)
+print(r.status_code)
+print(r.text)
