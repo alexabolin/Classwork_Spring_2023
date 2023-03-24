@@ -12,7 +12,9 @@ r = requests.post(server + "/add_test", json=data)
 print(r.status_code)
 print(r.text)
 
-results = {"id": 1}
-r = requests.get(server + "/get_results", json=results)
-print(r.status_code)
-print(r.text)
+# r = requests.get(server + "/get_results/1")
+# print(r.status_code)
+# print(r.text)
+# answer = r.json()
+# for t in answer:
+#     print(t)
