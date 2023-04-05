@@ -1,6 +1,7 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, filedialog
 import requests
+from PIL import Image, ImageTk
 
 
 def create_blood_type(blood_letter, rh):
@@ -39,6 +40,7 @@ def set_up_window():
     def ok_btn_cmd():
         patient_name = name_value.get()
         id_number = id_value.get()
+        id_number = int(id_number)
         blood_letter = blood_letter_value.get()
         rh = rh_factor_value.get()
         donation_center = donation_value.get()
@@ -48,6 +50,43 @@ def set_up_window():
 
     def cancel_btn_cmd():
         root.destroy()
+
+    def change_label_color():
+        current_color = top_label.cget("foreground")
+        if current_color == "":
+            color = "black"
+        else:
+            color = current_color.string
+        if color == "black":
+            new_color = "red"
+        else:
+            new_color = "black"
+
+        top_label.configure(foreground=new_color)
+        # wait 1 second (1000 ms)
+        root.after(1000, change_label_color)
+
+    def shuffle_choices():
+        # shuffles order of choices from dropdown
+        current_choices = list(donation_combobox.cget("values"))
+        import random
+        random.shuffle(current_choices)
+        donation_combobox.configure(values=current_choices)
+
+    def change_image_cmd():
+        print("Run change image")
+        filename = filedialog.askopenfilename(initialdir="Images")
+        if filename == "":
+            return
+        new_image = Image.open(filename)
+        current_size = new_image.size
+        max_size = 100
+        alpha = max_size/max(current_size)
+        new_image = new_image.resize((round(alpha*current_size[0]),
+                                      round(alpha*current_size[1])))
+        tk_image = ImageTk.PhotoImage(new_image)
+        image_label.configure(image=tk_image)
+        image_label.image = tk_image
 
     root = tk.Tk()
     root.title("Donor Database GUI")
@@ -82,7 +121,7 @@ def set_up_window():
                               value="B")
     B_check.grid(column=0, row=4, sticky=tk.W)
     AB_check = ttk.Radiobutton(root, text="AB", variable=blood_letter_value,
-                              value="AB")
+                               value="AB")
     AB_check.grid(column=0, row=5, sticky=tk.W)
     O_check = ttk.Radiobutton(root, text="O", variable=blood_letter_value,
                               value="O")
@@ -102,9 +141,22 @@ def set_up_window():
     donation_combobox.grid(column=2, row=1, padx=5)
     donation_combobox["values"] = ("Durham", "Apex", "Raleigh")
     donation_combobox.state(["readonly"])
+    donation_combobox.configure(postcommand=shuffle_choices)
 
     status_label = ttk.Label(root, text="")
     status_label.grid(column=0, row=7, columnspan=10)
+
+    pil_image = Image.open("Images/blank_pic.jpg")
+    pil_image = pil_image.resize((100, 100))
+    tk_image = ImageTk.PhotoImage(pil_image)
+    image_label = ttk.Label(root, image=tk_image)
+    image_label.grid(column=1, row=7)
+
+    image_change_button = ttk.Button(root, text="Change Image",
+                                     command=change_image_cmd)
+    image_change_button.grid(column=2, row=7)
+
+    root.after(3000, change_label_color)
 
     root.mainloop()
 

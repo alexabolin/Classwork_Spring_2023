@@ -19,9 +19,9 @@ def init_server():
 
 
 def add_patient_to_db(id, name, blood_type):
-    new_patient = Patient(patient_id = id,
-                          patient_name = name,
-                          blood_type = blood_type)
+    new_patient = Patient(patient_id=id,
+                          patient_name=name,
+                          blood_type=blood_type)
     save_patient = new_patient.save()
     return save_patient
 
